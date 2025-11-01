@@ -127,6 +127,14 @@ void User::setPassword(const std::string& password)
 		std::cout << "Ошибка: пароль уже установлен!" << std::endl;
 }
 
+// Регистрация пользователя
+void User::registerUser(const std::string& login, const std::string& password)
+{
+	setLogin(login);
+	setPassword(password);
+	activate();
+}
+
 // Методы активации 
 void User::activate()
 {
@@ -172,5 +180,18 @@ std::string User::hashPassword(const std::string& password) const
 	return ss.str();
 }
 
+// Метод для защищенного вывода информации о пользователе
+void User::displaySecureInfo(const std::string& inputPassword) const
+{
+	if (authenticate(inputPassword))
+	{
+		displayInfo();  // показываем информацию
+	}
+
+	else
+	{
+		std::cout << "Ошибка: неверный пароль!" << std::endl;
+	}
+}
 
 

@@ -46,16 +46,18 @@ public:
 	void setPhone(const std::string& phone);
 	void setPassword(const std::string& password);
 	void setLogin(const std::string& login);
-
+	void registerUser(const std::string& login, const std::string& password);
 	void activate();
 	void deactivate();
 
 	bool authenticate(const std::string& inputPassword) const;
 	void changePassword(const std::string& oldPassword, const std::string& newPassword);
-
-	virtual void displayInfo() const = 0;  // Вывод информации о пользователе
+	void displaySecureInfo(const std::string& inputPassword) const;
 
 	virtual std::string getUserType() const = 0;  // Возвращает роль пользователя
+
+protected:
+	virtual void displayInfo() const = 0;  // Вывод информации о пользователе
 
 private:
 	std::string hashPassword(const std::string& password) const;
