@@ -1,4 +1,5 @@
-﻿#include <string>
+﻿#pragma once
+#include <string>
 #include <vector>
 #include "user.hpp"
 #include "order.hpp"
@@ -31,6 +32,8 @@ public:
 
 	void registerCourier(const std::string& login, const std::string& password);  // Регистрация
 	double getTotalEarnings() const;   // Общая прибыль
+	std::string getPassport() const;
+	std::string getSnils() const;
 
 	bool acceptOrder(Order* order);   // Принять заказ
 	//Order* viewAvailableOrders();

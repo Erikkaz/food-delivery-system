@@ -116,6 +116,17 @@ bool Courier::acceptOrder(Order* order)
 	return true;
 }
 
+std::string Courier::getPassport() const
+{
+	return passport;
+}
+
+std::string Courier::getSnils() const
+{
+	return snils;
+}
+
+
 bool Courier::completeCurrentOrder()
 {
 	if (currentOrder == nullptr)
