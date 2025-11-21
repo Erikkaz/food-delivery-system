@@ -413,7 +413,14 @@ void Administrator::removeCourier(Courier& courier)
 // Создание отчёта
 void Administrator::generateReport(ReportType type, time_t start, time_t end)
 {
-	std::cout << "=== Отчёт с " << std::ctime(&start) << " по " << std::ctime(&end)<< " ===\n";
+	char startBuffer[26];
+	char endBuffer[26];
+
+	// Преобразуем время в строку безопасно
+	ctime_s(startBuffer, sizeof(startBuffer), &start);
+	ctime_s(endBuffer, sizeof(endBuffer), &end);
+
+	std::cout << "=== Отчёт с " << startBuffer << " по " << endBuffer << " ===\n";
 
 	switch (type)
 	{
@@ -454,7 +461,7 @@ void Administrator::generateReport(ReportType type, time_t start, time_t end)
 			// Проверка, попадает ли заказ в диапазон дат
 			if (o->getOrderTime() >= start && o->getOrderTime() <= end)
 			{
-				std::cout << "Заказ ID: " << o->getID()
+				std::cout << "Заказ ID: " << o->getId()
 					<< " | Клиент: " << o->getClientName()
 					<< " | Сумма: " << o->getPrice() << " руб" << std::endl;
 			}
