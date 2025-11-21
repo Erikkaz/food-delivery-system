@@ -1,6 +1,6 @@
-#include "cartitem.hpp" 
+п»ї#include "cartitem.hpp" 
 
-// Конструктор по умолчанию - пустая корзина
+// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ - РїСѓСЃС‚Р°СЏ РєРѕСЂР·РёРЅР°
 CartItem::CartItem()
     : dish(),
     quantity(0)
@@ -8,7 +8,7 @@ CartItem::CartItem()
 
 }
 
-// Конструктор с параметрами - блюдо и начальное количество
+// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё - Р±Р»СЋРґРѕ Рё РЅР°С‡Р°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ
 CartItem::CartItem(const Dish& d, int q)
     : dish(d),
     quantity(q)
@@ -16,19 +16,19 @@ CartItem::CartItem(const Dish& d, int q)
 
 }
 
-// Деструктор
+// Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
 CartItem::~CartItem()
 {
 
 }
 
-// Расчет общей стоимости позиции
+// Р Р°СЃС‡РµС‚ РѕР±С‰РµР№ СЃС‚РѕРёРјРѕСЃС‚Рё РїРѕР·РёС†РёРё
 double CartItem::getTotalPrice() const
 {
     return dish.getPrice() * quantity;
 }
 
-// Получение ссылки на блюдо в позиции
+// РџРѕР»СѓС‡РµРЅРёРµ СЃСЃС‹Р»РєРё РЅР° Р±Р»СЋРґРѕ РІ РїРѕР·РёС†РёРё
 const Dish& CartItem::getDish() const
 {
     return dish;
@@ -50,7 +50,7 @@ void CartItem::decreaseQuantity()
         quantity--;
 }
 
-// Установка нового количества
+// РЈСЃС‚Р°РЅРѕРІРєР° РЅРѕРІРѕРіРѕ РєРѕР»РёС‡РµСЃС‚РІР°
 void CartItem::updateQuantity(int newQuantity)
 {
     if (newQuantity < 0)

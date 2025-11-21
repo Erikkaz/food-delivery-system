@@ -1,29 +1,29 @@
-#include "dish.hpp"
+п»ї#include "dish.hpp"
 
-// Инициализация статической переменной
+// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ СЃС‚Р°С‚РёС‡РµСЃРєРѕР№ РїРµСЂРµРјРµРЅРЅРѕР№
 unsigned int Dish::nextId = 1;
 
-// Конструктор по умолчанию
+// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 Dish::Dish()
-    : id(nextId++),    // Автоматически присваиваем следующий ID
+    : id(nextId++),    // РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё РїСЂРёСЃРІР°РёРІР°РµРј СЃР»РµРґСѓСЋС‰РёР№ ID
     name(""), 
     price(0)
 {
 
 }
 
-// Деструктор
+// Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
 Dish::~Dish()
 {
 }
 
-// Установка названия блюда
+// РЈСЃС‚Р°РЅРѕРІРєР° РЅР°Р·РІР°РЅРёСЏ Р±Р»СЋРґР°
 void Dish::setName(const std::string& name)
 {
     this->name = name;
 }
 
-// Установка цены 
+// РЈСЃС‚Р°РЅРѕРІРєР° С†РµРЅС‹ 
 void Dish::setPrice(double price)
 {
     if (price < 0)
@@ -32,19 +32,19 @@ void Dish::setPrice(double price)
         this->price = price;
 }
 
-// Получение цены блюда
+// РџРѕР»СѓС‡РµРЅРёРµ С†РµРЅС‹ Р±Р»СЋРґР°
 double Dish::getPrice() const
 {
     return price;
 }
 
-// Получение Id блюда
+// РџРѕР»СѓС‡РµРЅРёРµ Id Р±Р»СЋРґР°
 unsigned int Dish::getID() const
 {
     return id;
 }
 
-// Получение названия блюда
+// РџРѕР»СѓС‡РµРЅРёРµ РЅР°Р·РІР°РЅРёСЏ Р±Р»СЋРґР°
 const std::string& Dish::getName() const
 {
     return name;

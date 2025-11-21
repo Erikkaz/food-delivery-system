@@ -1,23 +1,23 @@
-#pragma once
+п»ї#pragma once
 #include <string>
 
 class Dish
 {
 private:
-	static unsigned int nextId;  // Для автоинкремента id
+	static unsigned int nextId;  // Р”Р»СЏ Р°РІС‚РѕРёРЅРєСЂРµРјРµРЅС‚Р° id
 	unsigned int id; 
-	std::string name;  // Название блюда
-	double price;  // Цена блюда
+	std::string name;  // РќР°Р·РІР°РЅРёРµ Р±Р»СЋРґР°
+	double price;  // Р¦РµРЅР° Р±Р»СЋРґР°
 
 public:
 	Dish();
 	~Dish();
 
-	// Сеттеры
+	// РЎРµС‚С‚РµСЂС‹
 	void setName(const std::string& name);
 	void setPrice(double price);
 
-	// Геттеры
+	// Р“РµС‚С‚РµСЂС‹
 	double getPrice() const;
 	unsigned int getID() const;
 	const std::string& getName() const;

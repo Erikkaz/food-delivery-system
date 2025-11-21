@@ -1,9 +1,9 @@
-#include "review.hpp"
+п»ї#include "review.hpp"
 
-// Инициализация статической переменной 
+// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ СЃС‚Р°С‚РёС‡РµСЃРєРѕР№ РїРµСЂРµРјРµРЅРЅРѕР№ 
 unsigned int Review::nextId = 1;
 
-// Конструктор отзыва
+// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РѕС‚Р·С‹РІР°
 Review::Review(const Client* author,
     const Reviewable* target,
     float rating,
@@ -12,44 +12,44 @@ Review::Review(const Client* author,
     : id(nextId++),
     author(author),
     target(target),
-    rating(rating < 0 ? 0 : (rating > 5 ? 5 : rating)), // ограничиваем 0–5
+    rating(rating < 0 ? 0 : (rating > 5 ? 5 : rating)), // РѕРіСЂР°РЅРёС‡РёРІР°РµРј 0вЂ“5
     comment(comment),
     date(date)
 {
 
 }
 
-// Получение id
+// РџРѕР»СѓС‡РµРЅРёРµ id
 unsigned int Review::getId() const 
 { 
     return id; 
 }
 
-// Получение указателя на автора отзыва
+// РџРѕР»СѓС‡РµРЅРёРµ СѓРєР°Р·Р°С‚РµР»СЏ РЅР° Р°РІС‚РѕСЂР° РѕС‚Р·С‹РІР°
 const Client* Review::getAuthor() const 
 { 
     return author; 
 }
 
-// Получение указателя на объект отзыва
+// РџРѕР»СѓС‡РµРЅРёРµ СѓРєР°Р·Р°С‚РµР»СЏ РЅР° РѕР±СЉРµРєС‚ РѕС‚Р·С‹РІР°
 const Reviewable* Review::getTarget() const 
 { 
     return target; 
 }
 
-// Получение оценки отзыва
+// РџРѕР»СѓС‡РµРЅРёРµ РѕС†РµРЅРєРё РѕС‚Р·С‹РІР°
 float Review::getRating() const 
 { 
     return rating; 
 }
 
-// Получение отзыва
+// РџРѕР»СѓС‡РµРЅРёРµ РѕС‚Р·С‹РІР°
 const std::string& Review::getComment() const 
 {
     return comment; 
 }
 
-// Получение даты создания отзыва
+// РџРѕР»СѓС‡РµРЅРёРµ РґР°С‚С‹ СЃРѕР·РґР°РЅРёСЏ РѕС‚Р·С‹РІР°
 const std::string& Review::getDate() const 
 { 
     return date; 

@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 #include "client.hpp"
 
 Client::Client()
@@ -9,90 +9,90 @@ Client::Client()
 
 }
 
-// Освобождаем динамически выделенную память  
+// РћСЃРІРѕР±РѕР¶РґР°РµРј РґРёРЅР°РјРёС‡РµСЃРєРё РІС‹РґРµР»РµРЅРЅСѓСЋ РїР°РјСЏС‚СЊ  
 Client::~Client()
 {
-	clearOrderHistory();  // освобождаем заказы
-	clearReviews();       // освобождаем отзывы
+	clearOrderHistory();  // РѕСЃРІРѕР±РѕР¶РґР°РµРј Р·Р°РєР°Р·С‹
+	clearReviews();       // РѕСЃРІРѕР±РѕР¶РґР°РµРј РѕС‚Р·С‹РІС‹
 }
 
-// Регистрация клиента
+// Р РµРіРёСЃС‚СЂР°С†РёСЏ РєР»РёРµРЅС‚Р°
 void Client::registerClient(const std::string& login, const std::string& password)
 {
-	std::cout << "=== РЕГИСТРАЦИЯ КЛИЕНТА ===" << std::endl;
+	std::cout << "=== Р Р•Р“РРЎРўР РђР¦РРЇ РљР›РР•РќРўРђ ===" << std::endl;
 	registerUser(login, password);
 
-	std::cout << "Начислено 50 бонусов за регистрацию!" << std::endl;
+	std::cout << "РќР°С‡РёСЃР»РµРЅРѕ 50 Р±РѕРЅСѓСЃРѕРІ Р·Р° СЂРµРіРёСЃС‚СЂР°С†РёСЋ!" << std::endl;
 	addBonus(50);
 
-	std::cout << "Клиент успешно зарегистрирован!" << std::endl;
+	std::cout << "РљР»РёРµРЅС‚ СѓСЃРїРµС€РЅРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ!" << std::endl;
 }
 
-// Добавить блюдо в корзину
+// Р”РѕР±Р°РІРёС‚СЊ Р±Р»СЋРґРѕ РІ РєРѕСЂР·РёРЅСѓ
 void Client::addToCart(Dish* dish, int quantity)
 {
 	if (dish!=nullptr && quantity > 0)
 	{
 		cart.addDish(dish, quantity);
-		std::cout << "Добавлено в корзину!" << std::endl;
+		std::cout << "Р”РѕР±Р°РІР»РµРЅРѕ РІ РєРѕСЂР·РёРЅСѓ!" << std::endl;
 	}
 
 	else if (!dish)
 	{
-		std::cout << "Ошибка: Блюдо не найдено!" << std::endl;
+		std::cout << "РћС€РёР±РєР°: Р‘Р»СЋРґРѕ РЅРµ РЅР°Р№РґРµРЅРѕ!" << std::endl;
 	}
 
 	else if (quantity < 0)
 	{
-		std::cout << "Ошибка: неверное количество!" << std::endl;
+		std::cout << "РћС€РёР±РєР°: РЅРµРІРµСЂРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ!" << std::endl;
 	}
 }
 
-// Просмотр истории заказов
+// РџСЂРѕСЃРјРѕС‚СЂ РёСЃС‚РѕСЂРёРё Р·Р°РєР°Р·РѕРІ
 std::vector<Order*> Client::viewOrderHistory() const {
 	return orderHistory;
 }
 
-// Оплата заказа 
+// РћРїР»Р°С‚Р° Р·Р°РєР°Р·Р° 
 bool Client::payOrder(Order* order, PaymentMethod method)
 {
 	if (!order)
 	{
-		std::cout << "Ошибка: блюдо не найдено" << std::endl;
+		std::cout << "РћС€РёР±РєР°: Р±Р»СЋРґРѕ РЅРµ РЅР°Р№РґРµРЅРѕ" << std::endl;
 		return false;
 	}
 
-	bool paymentSuccess = false;  // флаг для проверки успешности оплаты
+	bool paymentSuccess = false;  // С„Р»Р°Рі РґР»СЏ РїСЂРѕРІРµСЂРєРё СѓСЃРїРµС€РЅРѕСЃС‚Рё РѕРїР»Р°С‚С‹
 
 	switch (method)
 	{
 	case PaymentMethod::Cash:
 		paymentSuccess = true;
-		std::cout << "Оплата наличными" << std::endl;
+		std::cout << "РћРїР»Р°С‚Р° РЅР°Р»РёС‡РЅС‹РјРё" << std::endl;
 		break;
 	
 	case PaymentMethod::Card:
 		paymentSuccess = true;
-		std::cout << "Оплата картой" << std::endl;
+		std::cout << "РћРїР»Р°С‚Р° РєР°СЂС‚РѕР№" << std::endl;
 		break;
 
 	case PaymentMethod::Transfer:
 		paymentSuccess = true;
-		std::cout << "Оплата переводом" << std::endl;
+		std::cout << "РћРїР»Р°С‚Р° РїРµСЂРµРІРѕРґРѕРј" << std::endl;
 		break;
 
 	case PaymentMethod::QR:
 		paymentSuccess = true;
-		std::cout << "Оплата QR-кодом" << std::endl;
+		std::cout << "РћРїР»Р°С‚Р° QR-РєРѕРґРѕРј" << std::endl;
 		break;
 
 	default:
-		std::cout << "Ошибка: оплата не прошла!" << std::endl;
+		std::cout << "РћС€РёР±РєР°: РѕРїР»Р°С‚Р° РЅРµ РїСЂРѕС€Р»Р°!" << std::endl;
 		return false;
 	}
 
-	double total = order->getPrice();  // Общая сумма заказа
-	double orderBonus = total * 0.05;  // бонусы за заказ 5%
+	double total = order->getPrice();  // РћР±С‰Р°СЏ СЃСѓРјРјР° Р·Р°РєР°Р·Р°
+	double orderBonus = total * 0.05;  // Р±РѕРЅСѓСЃС‹ Р·Р° Р·Р°РєР°Р· 5%
 
 	if (paymentSuccess)
 	{
@@ -103,7 +103,7 @@ bool Client::payOrder(Order* order, PaymentMethod method)
 
 }
 
-// Метод для начисления бонуса 
+// РњРµС‚РѕРґ РґР»СЏ РЅР°С‡РёСЃР»РµРЅРёСЏ Р±РѕРЅСѓСЃР° 
 void Client::addBonus(double amount)
 {
 	if (amount > 0)
@@ -113,19 +113,19 @@ void Client::addBonus(double amount)
 	
 }
 
-// Информация о клиенте 
+// РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РєР»РёРµРЅС‚Рµ 
 void Client::displayInfo() const
 {
-	std::cout << "=== ИНФОРМАЦИЯ О КЛИЕНТЕ ===" << std::endl;
-	std::cout << "Логин : " << getLogin() << std::endl;
+	std::cout << "=== РРќР¤РћР РњРђР¦РРЇ Рћ РљР›РР•РќРўР• ===" << std::endl;
+	std::cout << "Р›РѕРіРёРЅ : " << getLogin() << std::endl;
 	std::cout << "Email : " << getEmail() << std::endl;
-	std::cout << "Телефон : " << getPhone() << std::endl;
-	std::cout << "Бонусный баланс : " << bonusBalance << std::endl;
-	std::cout << "Количество заказов : " << orderHistory.size() << std::endl;
-	std::cout << "Статус : " << (getIsActive() ? "Активен" : "Неактивен") << std::endl;
+	std::cout << "РўРµР»РµС„РѕРЅ : " << getPhone() << std::endl;
+	std::cout << "Р‘РѕРЅСѓСЃРЅС‹Р№ Р±Р°Р»Р°РЅСЃ : " << bonusBalance << std::endl;
+	std::cout << "РљРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РєР°Р·РѕРІ : " << orderHistory.size() << std::endl;
+	std::cout << "РЎС‚Р°С‚СѓСЃ : " << (getIsActive() ? "РђРєС‚РёРІРµРЅ" : "РќРµР°РєС‚РёРІРµРЅ") << std::endl;
 }
 
-// Получить тип пользователя
+// РџРѕР»СѓС‡РёС‚СЊ С‚РёРї РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 std::string Client::getUserType() const {
 	return "Client";
 }
@@ -135,7 +135,7 @@ double Client::getBonusBalance() const
 	return bonusBalance;
 }
 
-// Сеттер
+// РЎРµС‚С‚РµСЂ
 void Client::setDeliveryAddress(const std::string& address)
 {
 	if (!address.empty())
@@ -145,35 +145,35 @@ void Client::setDeliveryAddress(const std::string& address)
 
 	else
 	{
-		std::cout << "Ошибка: не удалось установить адрес доставки!" << std::endl;
+		std::cout << "РћС€РёР±РєР°: РЅРµ СѓРґР°Р»РѕСЃСЊ СѓСЃС‚Р°РЅРѕРІРёС‚СЊ Р°РґСЂРµСЃ РґРѕСЃС‚Р°РІРєРё!" << std::endl;
 	}
 }
 
-// метод для отображения корзины
+// РјРµС‚РѕРґ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РєРѕСЂР·РёРЅС‹
 void Client::showCart() const
 {
 	cart.displayCart();
 }
 
-// метод для очистки корзины
+// РјРµС‚РѕРґ РґР»СЏ РѕС‡РёСЃС‚РєРё РєРѕСЂР·РёРЅС‹
 void Client::clearCart() 
 {
 	cart.clear();
 }
 
 
-// Оформление заказа из корзины 
+// РћС„РѕСЂРјР»РµРЅРёРµ Р·Р°РєР°Р·Р° РёР· РєРѕСЂР·РёРЅС‹ 
 Order* Client::placeOrder()
 {
 	if (cart.isEmpty())
 	{
-		std::cout << "Ошибка: корзина пуста!" << std::endl;
+		std::cout << "РћС€РёР±РєР°: РєРѕСЂР·РёРЅР° РїСѓСЃС‚Р°!" << std::endl;
 		return nullptr;
 	}
 
 	if (deliveryAddress.empty())
 	{
-		std::cout << "Ошибка: адрес не указан!" << std::endl;
+		std::cout << "РћС€РёР±РєР°: Р°РґСЂРµСЃ РЅРµ СѓРєР°Р·Р°РЅ!" << std::endl;
 		return nullptr;
 	}
 
@@ -181,22 +181,22 @@ Order* Client::placeOrder()
 	orderHistory.push_back(order);
 	clearCart();
 
-	std::cout << "Заказ успешно оформлен!" << std::endl;
+	std::cout << "Р—Р°РєР°Р· СѓСЃРїРµС€РЅРѕ РѕС„РѕСЂРјР»РµРЅ!" << std::endl;
 	return order;
 }
 
-// Оставить отзыв
+// РћСЃС‚Р°РІРёС‚СЊ РѕС‚Р·С‹РІ
 void Client::addReview(Reviewable* target, Review* review)
 {
 	if (target && review)
 	{
 		target->addReview(review);
 		reviews.push_back(review);
-		std::cout << "Отзыв успешно добавлен!" << std::endl;
+		std::cout << "РћС‚Р·С‹РІ СѓСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅ!" << std::endl;
 	}
 }
 
-// метод для отслеживания статуса заказа
+// РјРµС‚РѕРґ РґР»СЏ РѕС‚СЃР»РµР¶РёРІР°РЅРёСЏ СЃС‚Р°С‚СѓСЃР° Р·Р°РєР°Р·Р°
 OrderStatus Client::trackOrderStatus(int orderId) const
 {
 	auto it = std::find_if(orderHistory.begin(), orderHistory.end(), [orderId](Order* order)
@@ -213,7 +213,7 @@ OrderStatus Client::trackOrderStatus(int orderId) const
 }
 
 
-// Очистка истории заказов
+// РћС‡РёСЃС‚РєР° РёСЃС‚РѕСЂРёРё Р·Р°РєР°Р·РѕРІ
 void Client::clearOrderHistory()
 {
 	for (Order* order : orderHistory) {
@@ -223,7 +223,7 @@ void Client::clearOrderHistory()
 	orderHistory.clear();
 }
 
-// Очистка отзывов
+// РћС‡РёСЃС‚РєР° РѕС‚Р·С‹РІРѕРІ
 void Client::clearReviews() 
 {
 	for (Review* review : reviews) {

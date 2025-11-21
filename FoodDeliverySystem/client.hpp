@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include "user.hpp"
 #include "cart.hpp"
 #include "order.hpp"
@@ -9,9 +9,9 @@
 
 enum class PaymentMethod
 {
-    Cash,  // Наличные
-    Card,  // Карта
-    Transfer,  // Перевод
+    Cash,  // РќР°Р»РёС‡РЅС‹Рµ
+    Card,  // РљР°СЂС‚Р°
+    Transfer,  // РџРµСЂРµРІРѕРґ
     QR
 };
 
@@ -26,20 +26,20 @@ private:
 	std::vector<Review*> reviews;
 
 public:
-	// Конструктор
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	Client();
     
-    //Деструктор
+    //Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
     ~Client();
 
-    // Методы для освобождения динамической памяти
+    // РњРµС‚РѕРґС‹ РґР»СЏ РѕСЃРІРѕР±РѕР¶РґРµРЅРёСЏ РґРёРЅР°РјРёС‡РµСЃРєРѕР№ РїР°РјСЏС‚Рё
     void clearOrderHistory();  
     void clearReviews();
 
-	// Переопределенный виртуальный метод
+	// РџРµСЂРµРѕРїСЂРµРґРµР»РµРЅРЅС‹Р№ РІРёСЂС‚СѓР°Р»СЊРЅС‹Р№ РјРµС‚РѕРґ
 	std::string getUserType() const override;
 
-    // Основные методы клиента
+    // РћСЃРЅРѕРІРЅС‹Рµ РјРµС‚РѕРґС‹ РєР»РёРµРЅС‚Р°
     void registerClient(const std::string& login, const std::string& password);
     void addToCart(Dish* dish, int quantity);
     std::vector<Order*> viewOrderHistory() const;
@@ -52,10 +52,10 @@ public:
     void showCart() const;
     void clearCart();
 
-    // Геттер
+    // Р“РµС‚С‚РµСЂ
     double getBonusBalance() const;
 
-    // Сеттер
+    // РЎРµС‚С‚РµСЂ
     void setDeliveryAddress(const std::string& address);
   
 

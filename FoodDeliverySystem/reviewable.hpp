@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <vector>
 
 class Review;
@@ -6,11 +6,11 @@ class Review;
 class Reviewable
 {
 protected:
-    std::vector<Review*> reviews;  // Коллекция указателей на отзывы
+    std::vector<Review*> reviews;  // РљРѕР»Р»РµРєС†РёСЏ СѓРєР°Р·Р°С‚РµР»РµР№ РЅР° РѕС‚Р·С‹РІС‹
 
 public:
-    const std::vector<Review*>& getReviews() const;   // Получение всех отзывов объекта
-    void addReview(Review* review);  // Добавление нового отзыва
-    void removeReview(unsigned int reviewId);   // Удаление отзыва 
-    double calculateRating() const; // Расчет средней оценки
+    const std::vector<Review*>& getReviews() const;   // РџРѕР»СѓС‡РµРЅРёРµ РІСЃРµС… РѕС‚Р·С‹РІРѕРІ РѕР±СЉРµРєС‚Р°
+    void addReview(Review* review);  // Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕРіРѕ РѕС‚Р·С‹РІР°
+    void removeReview(unsigned int reviewId);   // РЈРґР°Р»РµРЅРёРµ РѕС‚Р·С‹РІР° 
+    double calculateRating() const; // Р Р°СЃС‡РµС‚ СЃСЂРµРґРЅРµР№ РѕС†РµРЅРєРё
 };

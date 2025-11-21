@@ -1,40 +1,40 @@
-#include "reviewable.hpp"
+п»ї#include "reviewable.hpp"
 #include "review.hpp" 
 
-// Получение константной ссылки на вектор отзывов
+// РџРѕР»СѓС‡РµРЅРёРµ РєРѕРЅСЃС‚Р°РЅС‚РЅРѕР№ СЃСЃС‹Р»РєРё РЅР° РІРµРєС‚РѕСЂ РѕС‚Р·С‹РІРѕРІ
 const std::vector<Review*>& Reviewable::getReviews() const
 {
     return reviews;
 }
 
-// Добавление нового отзыва 
+// Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕРіРѕ РѕС‚Р·С‹РІР° 
 void Reviewable::addReview(Review* review)
 {
     reviews.push_back(review);
 }
 
-// Удаление отзыва по id
+// РЈРґР°Р»РµРЅРёРµ РѕС‚Р·С‹РІР° РїРѕ id
 void Reviewable::removeReview(unsigned int reviewId)
 {
-    // Поиск отзыва по id в векторе
+    // РџРѕРёСЃРє РѕС‚Р·С‹РІР° РїРѕ id РІ РІРµРєС‚РѕСЂРµ
     for (auto it = reviews.begin(); it != reviews.end(); ++it)
     {
         if ((*it)->getId() == reviewId)
         {
-            reviews.erase(it);  // Удаление найденного отзыва
+            reviews.erase(it);  // РЈРґР°Р»РµРЅРёРµ РЅР°Р№РґРµРЅРЅРѕРіРѕ РѕС‚Р·С‹РІР°
             return;
         }
     }
 }
 
-// Расчет средней оценки 
+// Р Р°СЃС‡РµС‚ СЃСЂРµРґРЅРµР№ РѕС†РµРЅРєРё 
 double Reviewable::calculateRating() const
 {
-    // Если отзывов нет - возвращаем 0
+    // Р•СЃР»Рё РѕС‚Р·С‹РІРѕРІ РЅРµС‚ - РІРѕР·РІСЂР°С‰Р°РµРј 0
     if (reviews.empty())
         return 0;
 
-    // Суммируем все оценки
+    // РЎСѓРјРјРёСЂСѓРµРј РІСЃРµ РѕС†РµРЅРєРё
     double sum = 0;
     for (const auto& r : reviews)
         sum += r->getRating();

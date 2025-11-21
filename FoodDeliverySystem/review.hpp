@@ -1,30 +1,30 @@
-#pragma once
+п»ї#pragma once
 #include <string>
 
-// Предварительные объявления для избежания циклических включений
+// РџСЂРµРґРІР°СЂРёС‚РµР»СЊРЅС‹Рµ РѕР±СЉСЏРІР»РµРЅРёСЏ РґР»СЏ РёР·Р±РµР¶Р°РЅРёСЏ С†РёРєР»РёС‡РµСЃРєРёС… РІРєР»СЋС‡РµРЅРёР№
 class Client;
 class Reviewable;
 
 class Review
 {
 private:
-    static unsigned int nextId;  // Статическая переменная для автоинкремента id
+    static unsigned int nextId;  // РЎС‚Р°С‚РёС‡РµСЃРєР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ Р°РІС‚РѕРёРЅРєСЂРµРјРµРЅС‚Р° id
     unsigned int id;
-    const Client* author;  // Автор отзыва
-    const Reviewable* target;  // Объект отзыва 
-    float rating;   // Оценка от 0 до 5
-    std::string comment;  // Текст отзыва
-    std::string date;  // Дата создания отзыва
+    const Client* author;  // РђРІС‚РѕСЂ РѕС‚Р·С‹РІР°
+    const Reviewable* target;  // РћР±СЉРµРєС‚ РѕС‚Р·С‹РІР° 
+    float rating;   // РћС†РµРЅРєР° РѕС‚ 0 РґРѕ 5
+    std::string comment;  // РўРµРєСЃС‚ РѕС‚Р·С‹РІР°
+    std::string date;  // Р”Р°С‚Р° СЃРѕР·РґР°РЅРёСЏ РѕС‚Р·С‹РІР°
 
 public:
-    // Конструктор отзыва
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РѕС‚Р·С‹РІР°
     Review(const Client* author,
         const Reviewable* target,
         float rating,
         const std::string& comment,
         const std::string& date);
 
-    // === Геттеры ===
+    // === Р“РµС‚С‚РµСЂС‹ ===
     unsigned int getId() const;
     const Client* getAuthor() const;
     const Reviewable* getTarget() const;

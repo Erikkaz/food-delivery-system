@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include "dish.hpp"
 #include "cartItem.hpp"
 #include "restaurant.hpp"
@@ -6,19 +6,19 @@
 class Cart
 {
 private:
-	std::vector<CartItem> items;  // Список позиций в корзине
-	Restaurant selectedRestaurant;   // Выбранный ресторан
-	double subtotal;  // Общая стоимость корзины
+	std::vector<CartItem> items;  // РЎРїРёСЃРѕРє РїРѕР·РёС†РёР№ РІ РєРѕСЂР·РёРЅРµ
+	Restaurant selectedRestaurant;   // Р’С‹Р±СЂР°РЅРЅС‹Р№ СЂРµСЃС‚РѕСЂР°РЅ
+	double subtotal;  // РћР±С‰Р°СЏ СЃС‚РѕРёРјРѕСЃС‚СЊ РєРѕСЂР·РёРЅС‹
 
-	void updateSubtotal();   // Пересчет общей суммы
+	void updateSubtotal();   // РџРµСЂРµСЃС‡РµС‚ РѕР±С‰РµР№ СЃСѓРјРјС‹
 
 public:
 	Cart();
 	~Cart();
 
-	void addDish(Dish* dish, int quantity);  // Добавить блюдо
-	void removeDish(const std::string& dishName);  // Удалить блюдо по имени
-	void displayCart() const;  // Показать содержимое корзины
-	void clear();  // Очистить корзину
-	bool isEmpty() const;   // Проверить пустоту корзины
+	void addDish(Dish* dish, int quantity);  // Р”РѕР±Р°РІРёС‚СЊ Р±Р»СЋРґРѕ
+	void removeDish(const std::string& dishName);  // РЈРґР°Р»РёС‚СЊ Р±Р»СЋРґРѕ РїРѕ РёРјРµРЅРё
+	void displayCart() const;  // РџРѕРєР°Р·Р°С‚СЊ СЃРѕРґРµСЂР¶РёРјРѕРµ РєРѕСЂР·РёРЅС‹
+	void clear();  // РћС‡РёСЃС‚РёС‚СЊ РєРѕСЂР·РёРЅСѓ
+	bool isEmpty() const;   // РџСЂРѕРІРµСЂРёС‚СЊ РїСѓСЃС‚РѕС‚Сѓ РєРѕСЂР·РёРЅС‹
 };

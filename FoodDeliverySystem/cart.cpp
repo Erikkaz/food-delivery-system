@@ -1,101 +1,101 @@
-#include "cart.hpp"
+п»ї#include "cart.hpp"
 #include <iostream>
 
-// Конструктор
+// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 Cart::Cart() : subtotal(0)
 {
 
 }
 
-// Деструктор
+// Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
 Cart::~Cart()
 {
 
 }
 
-// Пересчитываем сумму корзины
+// РџРµСЂРµСЃС‡РёС‚С‹РІР°РµРј СЃСѓРјРјСѓ РєРѕСЂР·РёРЅС‹
 void Cart::updateSubtotal()
 {
     subtotal = 0;
     for (const auto& item : items)
-        subtotal += item.getTotalPrice();  // Суммируем стоимость всех позиций
+        subtotal += item.getTotalPrice();  // РЎСѓРјРјРёСЂСѓРµРј СЃС‚РѕРёРјРѕСЃС‚СЊ РІСЃРµС… РїРѕР·РёС†РёР№
 }
 
-// Добавление блюда в корзину
+// Р”РѕР±Р°РІР»РµРЅРёРµ Р±Р»СЋРґР° РІ РєРѕСЂР·РёРЅСѓ
 void Cart::addDish(Dish* dish, int quantity)
 {
-    // Проверка валидности параметров
+    // РџСЂРѕРІРµСЂРєР° РІР°Р»РёРґРЅРѕСЃС‚Рё РїР°СЂР°РјРµС‚СЂРѕРІ
     if (!dish || quantity <= 0)
         return;
 
-    // Поиск блюда в корзине
+    // РџРѕРёСЃРє Р±Р»СЋРґР° РІ РєРѕСЂР·РёРЅРµ
     for (auto& item : items)
     {
         if (item.getDish().getName() == dish->getName())
         {
             item.updateQuantity(item.getQuantity() + quantity);
-            updateSubtotal(); // Пересчитываем сумму
+            updateSubtotal(); // РџРµСЂРµСЃС‡РёС‚С‹РІР°РµРј СЃСѓРјРјСѓ
             return;
         }
     }
 
-    // Если блюда нет в корзине - добавляем новую позицию
+    // Р•СЃР»Рё Р±Р»СЋРґР° РЅРµС‚ РІ РєРѕСЂР·РёРЅРµ - РґРѕР±Р°РІР»СЏРµРј РЅРѕРІСѓСЋ РїРѕР·РёС†РёСЋ
     items.emplace_back(*dish, quantity);
 
     updateSubtotal();
 }
 
-// Удаление блюда из корзины по имени
+// РЈРґР°Р»РµРЅРёРµ Р±Р»СЋРґР° РёР· РєРѕСЂР·РёРЅС‹ РїРѕ РёРјРµРЅРё
 void Cart::removeDish(const std::string& dishName)
 {
     for (auto it = items.begin(); it != items.end(); ++it)
     {
         if (it->getDish().getName() == dishName)
         {
-            items.erase(it);   // Удаляем позицию
-            updateSubtotal();  // Пересчитываем сумму
+            items.erase(it);   // РЈРґР°Р»СЏРµРј РїРѕР·РёС†РёСЋ
+            updateSubtotal();  // РџРµСЂРµСЃС‡РёС‚С‹РІР°РµРј СЃСѓРјРјСѓ
             return;
         }
     }
 
-    std::cout << "Блюдо '" << dishName << "' не найдено в корзине!\n";
+    std::cout << "Р‘Р»СЋРґРѕ '" << dishName << "' РЅРµ РЅР°Р№РґРµРЅРѕ РІ РєРѕСЂР·РёРЅРµ!\n";
 }
 
-// Очистка корзины
+// РћС‡РёСЃС‚РєР° РєРѕСЂР·РёРЅС‹
 void Cart::clear()
 {
     items.clear(); 
     subtotal = 0;
 }
  
-// Проверка пустоты
+// РџСЂРѕРІРµСЂРєР° РїСѓСЃС‚РѕС‚С‹
 bool Cart::isEmpty() const
 {
     return items.empty();
 }
 
-// Отображение содержимого корзины
+// РћС‚РѕР±СЂР°Р¶РµРЅРёРµ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РєРѕСЂР·РёРЅС‹
 void Cart::displayCart() const
 {
     if (items.empty())
     {
-        std::cout << "Корзина пуста." << std::endl;
+        std::cout << "РљРѕСЂР·РёРЅР° РїСѓСЃС‚Р°." << std::endl;
         return;
     }
 
-    std::cout << "===== КОРЗИНА =====" << std::endl;
+    std::cout << "===== РљРћР Р—РРќРђ =====" << std::endl;
 
-    // Вывод каждой позиции с деталями
+    // Р’С‹РІРѕРґ РєР°Р¶РґРѕР№ РїРѕР·РёС†РёРё СЃ РґРµС‚Р°Р»СЏРјРё
     for (const auto& item : items)
     {
         std::cout << item.getDish().getName()
             << " x" << item.getQuantity()
-            << "  Цена: " << item.getDish().getPrice()
-            << "  Сумма: " << item.getTotalPrice()
+            << "  Р¦РµРЅР°: " << item.getDish().getPrice()
+            << "  РЎСѓРјРјР°: " << item.getTotalPrice()
             << std::endl;
     }
 
     std::cout << "---------------------" << std::endl;
-    std::cout << "Итого: " << subtotal <<  std::endl;
+    std::cout << "РС‚РѕРіРѕ: " << subtotal <<  std::endl;
     std::cout << "=====================" << std::endl;
 }

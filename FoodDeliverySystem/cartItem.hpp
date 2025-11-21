@@ -4,19 +4,19 @@
 class CartItem
 {
 private:
-	Dish dish;  // Блюдо в корзине
-	int quantity;  // Количество данного блюда
+	Dish dish;  // Р‘Р»СЋРґРѕ РІ РєРѕСЂР·РёРЅРµ
+	int quantity;  // РљРѕР»РёС‡РµСЃС‚РІРѕ РґР°РЅРЅРѕРіРѕ Р±Р»СЋРґР°
 
 public:
 	CartItem();
 	~CartItem();
-	CartItem(const Dish& d, int q);  // Конструктор с параметрами
+	CartItem(const Dish& d, int q);  // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё
 
-	double getTotalPrice() const;  // Общая стоимость позиции
-	const Dish& getDish() const;  // Получить блюдо
-	int getQuantity() const;  // Получить количество
+	double getTotalPrice() const;  // РћР±С‰Р°СЏ СЃС‚РѕРёРјРѕСЃС‚СЊ РїРѕР·РёС†РёРё
+	const Dish& getDish() const;  // РџРѕР»СѓС‡РёС‚СЊ Р±Р»СЋРґРѕ
+	int getQuantity() const;  // РџРѕР»СѓС‡РёС‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ
 
-	void increaseQuantity();  // Увеличить количество на 1
-	void decreaseQuantity();  // Уменьшить количество на 1
-	void updateQuantity(int newQuantity);  // Установить новое количество
+	void increaseQuantity();  // РЈРІРµР»РёС‡РёС‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ РЅР° 1
+	void decreaseQuantity();  // РЈРјРµРЅСЊС€РёС‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ РЅР° 1
+	void updateQuantity(int newQuantity);  // РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РЅРѕРІРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ
 };
