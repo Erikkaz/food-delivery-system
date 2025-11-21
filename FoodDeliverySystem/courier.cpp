@@ -154,3 +154,49 @@ bool Courier::completeCurrentOrder()
 	std::cout << "Заказ успешно доставлен.\n";
 	return true;
 }
+
+// Метод показывает доступные заказы 
+Order* Courier::viewAvailableOrders(std::vector<Order>& orders)
+{
+	std::cout << "\n=== ДОСТУПНЫЕ ЗАКАЗЫ ===\n";
+
+	// флаг: найден ли хотя бы один доступный заказ
+	bool found = false;
+
+	// Перебираем все заказы в системе
+	for (auto& order : orders)
+	{
+		if (order.getStatus() == OrderStatus::Ready_for_pickup)
+		{
+			std::cout << "ID: " << order.getId()
+				<< " | Клиент: " << order.getClientName()
+				<< " | Цена: " << order.getPrice()
+				<< std::endl;
+			found = true;  // нашёлся хотя бы один заказ
+		} 
+	}
+
+	// Если нет ни одного доступного заказа
+	if (!found)
+	{
+		std::cout << "Нет доступных заказов.\n";
+		return nullptr;
+	}
+
+	std::cout << "Введите ID заказа: ";
+	unsigned int id;
+	std::cin >> id;
+
+	for (auto& order : orders)
+	{
+		if (order.getId() == id &&
+			order.getStatus() == OrderStatus::Ready_for_pickup)
+		{
+			return &order;  // Возвращаем адрес найденного заказа
+		}
+	}
+
+	// Если заказ с таким ID не найден
+	std::cout << "Заказ не найден.\n";
+	return nullptr;
+}

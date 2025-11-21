@@ -4,8 +4,9 @@
 #include "user.hpp"
 #include "order.hpp"
 #include "review.hpp"
+#include "reviewable.hpp"
 
-class Courier : public User
+class Courier : public User, public Reviewable
 {
 private:
 	// Данные курьера, которые необходимо предоставить администратору
@@ -36,7 +37,6 @@ public:
 	std::string getSnils() const;
 
 	bool acceptOrder(Order* order);   // Принять заказ
-	//Order* viewAvailableOrders();
-	//Review* viewReviews(); 
+	Order* viewAvailableOrders(std::vector<Order>& orders);
 	void viewEarnings() const;    // Посмотреть заработок
 };
