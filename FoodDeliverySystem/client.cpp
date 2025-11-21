@@ -91,7 +91,7 @@ bool Client::payOrder(Order* order, PaymentMethod method)
 		return false;
 	}
 
-	double total = order->getTotalAmount();  // Общая сумма заказа
+	double total = order->getPrice();  // Общая сумма заказа
 	double orderBonus = total * 0.05;  // бонусы за заказ 5%
 
 	if (paymentSuccess)
@@ -130,7 +130,7 @@ std::string Client::getUserType() const {
 	return "Client";
 }
 
-float Client::getBonusBalance() const
+double Client::getBonusBalance() const
 {
 	return bonusBalance;
 }

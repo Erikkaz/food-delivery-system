@@ -19,7 +19,7 @@ enum class PaymentMethod
 class Client : public User
 {
 private:
-	float bonusBalance;
+    double bonusBalance;
 	std::string deliveryAddress;
 	Cart cart;
 	std::vector<Order*> orderHistory;
@@ -53,7 +53,7 @@ public:
     void clearCart();
 
     // Геттер
-    float getBonusBalance() const;
+    double getBonusBalance() const;
 
     // Сеттер
     void setDeliveryAddress(const std::string& address);
